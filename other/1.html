@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet">
+    <title>Windows下Apache2.4+Mysql5.7+Mod_fcgid+PHP多版本共存(PHP5.3+PHP5.4+PHP5.5+PHP5.6+PHP7) – 野马君</title>
+<link rel="dns-prefetch" href="//cdn.staticfile.org">
+<link rel="dns-prefetch" href="//s.w.org">
+<script type="text/javascript" src="//cdn.staticfile.org/jquery/3.1.1/jquery.min.js?ver=v1.2.5"></script>
+<script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script>
+<script type="text/javascript" src="//cdn.staticfile.org/prettify/r298/prettify.js?ver=v1.2.5"></script>
+<script type="text/javascript" src="//cdn.staticfile.org/instantclick/3.0.1/instantclick.min.js?ver=v1.2.5"></script>
+
+
+
+
+
+    <script>
+        if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
+        if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
+    </script>
+</head>
+<body>
+<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style>
+
+<header class="header">
+    <section class="container">
+        <hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter">
+            <h1 class="fullname">Windows下Apache2.4+Mysql5.7+Mod_fcgid+PHP多版本共存(PHP5.3+PHP5.4+PHP5.5+PHP5.6+PHP7)</h1>
+        </hgroup>
+    </section>
+    <section class="infos">
+        <div class="container containermenu" style="max-width: 100%;">
+                    <nav class="header_nav textcenter"><ul id="menu-%e5%a4%b4%e9%83%a8%e5%af%bc%e8%88%aa" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="http://jun.yipiyema.com">最新</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5"><a href="https://www.yemajun.com/other">其他</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69"><a href="https://www.yemajun.com/reprint">转载</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="https://www.yemajun.com/about">关于</a></li>
+</ul></nav>            </div>
+                
+    </section>
+</header>    
+    <section class="container main-load">
+        <article class="post_article" itemscope itemtype="https://schema.org/Article">
+        
+<ul><li>C++ Redistributable Visual Studio 2015（VC14） : <a rel="noreferrer noopener" href="https://go.microsoft.com/fwlink/?LinkId=615459" target="_blank"><strong>vc_redist.x86.exe</strong></a> or <a rel="noreferrer noopener" href="https://go.microsoft.com/fwlink/?LinkId=615460" target="_blank"><strong>vc_redist.x64.exe</strong></a></li><li>Visual C++ Redistributable for Visual Studio 2012（VC11） : <a rel="noreferrer noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=30679" target="_blank"><strong>vcredist_x64/86.exe</strong></a></li><li>Visual C++ Redistributable for Visual Studio 2008（VC9） : <a rel="noreferrer noopener" href="http://www.microsoft.com/zh-CN/download/details.aspx?id=5582" target="_blank"><strong>vc_redist.x86.exe</strong></a> or <a rel="noreferrer noopener" href="http://www.microsoft.com/zh-CN/download/details.aspx?id=15336" target="_blank"><strong>vc_redist.x64.exe</strong></a></li><li>Apache 2.4.25 Win64：<strong><a rel="noreferrer noopener" href="https://www.apachelounge.com/download/VC14/binaries/httpd-2.4.25-win64-VC14.zip" target="_blank">httpd-2.4.25-win64-VC14.zip</a></strong></li><li>Mod_fcgid：<strong><a rel="noreferrer noopener" href="http://www.apachelounge.com/download/VC14/modules/mod_fcgid-2.3.9-win64-VC14.zip" target="_blank">mod_fcgid-2.3.9-win64-VC14.zip</a></strong></li><li>Mysql 5.7.14 winx64：<strong><a rel="noreferrer noopener" href="http://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.14-winx64.zip" target="_blank">mysql-5.7.14-winx64.zip</a></strong></li><li>PHP 5.3.29 nts Win32：<strong><a rel="noreferrer noopener" href="http://windows.php.net/downloads/releases/php-5.3.29-nts-Win32-VC9-x86.zip" target="_blank">php-5.3.29-nts-Win32-VC9-x86.zip</a></strong></li><li>PHP 5.4.45 nts Win32：<strong><a rel="noreferrer noopener" href="http://windows.php.net/downloads/releases/php-5.4.45-nts-Win32-VC9-x86.zip" target="_blank">php-5.4.45-nts-Win32-VC9-x86.zip</a></strong></li><li>PHP 5.5.38 nts Win32 x64：<strong><a rel="noreferrer noopener" href="http://windows.php.net/downloads/releases/php-5.5.38-nts-Win32-VC11-x64.zip" target="_blank">php-5.5.38-nts-Win32-VC11-x64.zip</a></strong></li><li>PHP 5.6.25 nts Win32 x64：<strong><a rel="noreferrer noopener" href="http://windows.php.net/downloads/releases/php-5.6.25-nts-Win32-VC11-x64.zip" target="_blank">php-5.6.25-nts-Win32-VC11-x64.zip</a></strong></li><li>PHP 7.0.10 nts Win32 x64：<strong><a rel="noreferrer noopener" href="http://windows.php.net/downloads/releases/php-7.0.10-nts-Win32-VC14-x64.zip" target="_blank">php-7.0.10-nts-Win32-VC14-x64.zip</a></strong></li></ul>
+
+
+
+<p>安装时请确认已经安装好（VC14+VC11+VC9）</p>
+
+
+
+<p><strong>1.安装Apache</strong></p>
+
+
+
+<p>把Apache 2.4解压到C:\Program Files\并修改C:\Program Files\Apache24\conf\httpd.conf文件</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到 ServerRoot "c:/Apache24" 改为 ServerRoot "c:/Program Files/Apache24"
+
+找到 #ServerName www.example.com:80 并去掉前面的#号
+ 
+找到 DocumentRoot "c:/Apache24/htdocs" 改为 DocumentRoot "c:/Program Files/Apache24/htdocs"
+
+找到 <Directory "c:/Apache24/htdocs"> 改为 <Directory "c:/Program Files/Apache24/htdocs">
+
+找到 ScriptAlias /cgi-bin/ "c:/Apache24/cgi-bin/" 改为 ScriptAlias /cgi-bin/ "c:/Program Files/Apache24/cgi-bin/"
+
+找到 <Directory "c:/Apache24/cgi-bin"> 改为 <Directory "c:/Program Files/Apache24/cgi-bin"></code></pre>
+
+
+
+<p>
+
+开始-运行-输入CMD-以管理员身份运行CMD-输入命令
+
+</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">cd C:\Program Files\Apache24\bin\
+
+httpd.exe -k install
+
+httpd.exe -k start</code></pre>
+
+
+
+<p><strong>2.Apache加载fcgid扩展模块</strong></p>
+
+
+
+<p>解压mod_fcgid.so文件到C:\Program Files\Apache24\modules，并打开C:\Program Files\Apache24\conf\httpd.conf文件，在最后一行加入下面代码</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">#加载fcgid扩展模块
+LoadModule fcgid_module modules/mod_fcgid.so
+#添加映射
+AddHandler fcgid-script .php
+# 设置PHP_FCGI_MAX_REQUESTS大于或等于FcgidMaxRequestsPerProcess，防止php-cgi进程在处理完所有请求前退出
+FcgidInitialEnv PHP_FCGI_MAX_REQUESTS 1000
+#php-cgi每个进程的最大请求数
+FcgidMaxRequestsPerProcess 1000
+#php-cgi最大的进程数
+FcgidMaxProcesses 100
+#最大执行时间
+FcgidIOTimeout 120
+FcgidIdleTimeout 120
+AddType application/x-httpd-php .php
+AcceptFilter http none
+AcceptFilter https none
+EnableSendfile off
+EnableMMAP off</code></pre>
+
+
+
+<p><strong>3.安装PHP</strong></p>
+
+
+
+<p>在C盘根目录新建PHP文件夹，解压各版本PHP到C:\PHP\，在各PHP文件夹找到php.ini-development文件重命名为php.ini打开并修改</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到;extension_dir = "ext" 去掉前面的; 号
+找到;extension=php_mbstring.dll 去掉前面的; 号
+找到;date.timezone = 去掉前面的; 号并修改为 date.timezone = "Asia/Shanghai"
+有需要可以配置upload_tmp_dir和session.save_path</code></pre>
+
+
+
+<p>
+
+打开C:\Program Files\Apache24\conf\httpd.conf文件
+
+</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到
+DirectoryIndex index.html
+加上index.php修改为
+DirectoryIndex index.html index.php</code></pre>
+
+
+
+<p><strong>4.安装Mysql</strong></p>
+
+
+
+<p>解压Mysql5.7到C:\Program Files\，将my-default.ini重命名为my.ini打开并修改</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到
+# basedir = .....
+# datadir = .....
+# port = .....
+去掉#号，并修改为
+basedir = C:\Program Files\mysql-5.7.14-winx64
+datadir = C:\Program Files\mysql-5.7.14-winx64\data
+port = 3306</code></pre>
+
+
+
+<p>在C:\Program Files\mysql-5.7.14-winx64\下新建data文件夹</p>
+
+
+
+<p>以管理员身份运行CMD-输入命令</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">cd C:\Program Files\mysql-5.7.14-winx64\bin
+
+mysqld --initialize
+
+mysqld -install
+
+net start mysql</code></pre>
+
+
+
+<p>到C:\PHP\各PHP目录下修改php.ini文件</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到
+;extension=php_mysqli.dll
+;extension=php_pdo_mysql.dll
+去掉;号</code></pre>
+
+
+
+<p>
+
+数据库随机密码在C:\Program Files\mysql-5.7.14-winx64\data\下面的.err文件中搜索root<a href="http://my.oschina.net/u/570656" target="_blank" rel="noreferrer noopener">@localhost</a>: 找到，修改密码以管理员身份运行CMD-输入命令
+
+</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">cd C:\Program Files\mysql-5.7.14-winx64\bin
+
+mysql -uroot -p
+
+set password for root@localhost = password('密码'); 
+#Mysql 8.0修改密码#
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '密码';  
+
+#Mysql 8.0改密码验证方式my.ini#
+default_authentication_plugin = mysql_native_password</code></pre>
+
+
+
+<p><strong>5.启用vhosts支持PHP多版本共存</strong></p>
+
+
+
+<p>打开C:\Program Files\Apache24\conf\httpd.conf文件</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">找到
+#Include conf/extra/httpd-vhosts.conf
+去掉#号</code></pre>
+
+
+
+<p>打开C:\Program Files\Apache24\conf\extra\httpd-vhosts.conf修改配置文件</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">#注意FcgidInitialEnv PHPRC和FcgidWrapper为你PHP所在的目录
+#使用PHP5.3
+<VirtualHost *:80>
+      ServerName www.php53.com
+      FcgidInitialEnv PHPRC "C:/PHP/php53"
+      FcgidWrapper "C:/PHP/php53/php-cgi.exe" .php
+	  DocumentRoot "C:/Program Files/Apache24/htdocs"
+		<Directory "C:/Program Files/Apache24/htdocs">
+			Options FollowSymLinks ExecCGI
+			AllowOverride None
+			Order deny,allow
+			allow from all
+		</Directory>
+</VirtualHost>
+#使用PHP5.4
+<VirtualHost *:80>
+      ServerName www.php54.com
+      FcgidInitialEnv PHPRC "C:/PHP/php54"
+      FcgidWrapper "C:/PHP/php54/php-cgi.exe" .php
+	  DocumentRoot "C:/Program Files/Apache24/htdocs"
+		<Directory "C:/Program Files/Apache24/htdocs">
+			Options FollowSymLinks ExecCGI
+			AllowOverride None
+			Order deny,allow
+			allow from all
+		</Directory>
+</VirtualHost>
+#使用PHP7
+<VirtualHost *:80>
+      ServerName www.php7.com
+      FcgidInitialEnv PHPRC "C:/PHP/php7"
+      FcgidWrapper "C:/PHP/php7/php-cgi.exe" .php
+	  DocumentRoot "C:/Program Files/Apache24/htdocs"
+		<Directory "C:/Program Files/Apache24/htdocs">
+			Options FollowSymLinks ExecCGI
+			AllowOverride None
+			Order deny,allow
+			allow from all
+		</Directory>
+</VirtualHost>
+#以此类推</code></pre>
+
+
+
+<p>以管理员身份运行CMD-输入命令重启Apache</p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">cd C:\Program Files\Apache24\bin\
+
+httpd.exe -k restart</code></pre>
+        </article>
+    </section><footer class="footer" style="display:none;">
+	<section class="container">
+        <div class="menu"><ul>
+<li id="menu-item-2" class=""><a></a></li>
+</ul></div>
+
+        <p class="textcenter">
+            <span>©  <a href="https://www.yemajun.com">野马君</a>：极简即自由</span>
+        </p>
+        
+        <div class="menu"><ul>
+<li id="menu-item-2" class=""><a></a></li>
+</ul></div>
+	</section>
+</footer>
+
+<div class="setting_tool iconfont colors" style="display:none;">
+    <div class="c">
+        <ul>
+            <li class="color undefined">白昼</li>
+            <li class="color sepia">黄昏</li>
+            <li class="color night">夜晚</li>
+            <li class="hr">
+            <li class="font serif">宋体</li>
+            <li class="font sans">黑体</li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/ajax-comment.js"></script>
+<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $(".post_article a").attr("rel" , "external");
+                $("a[rel='external']:not([href^='#']),a[rel='external nofollow']:not([href^='#'])").attr("target","_blank");
+                $("a.vi,.gallery a,.attachment a").attr("rel" , "");
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<div class="bg" style="background-image:url(https://www.google.com/s2/favicons?domain='+$(this).attr("href")+')">')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    InstantClick.on('change', function(isInitialLoad) {
+        jQuery.adamsOverload();
+        if (isInitialLoad === false) {
+            // support MathJax
+            if (typeof MathJax !== 'undefined') MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            // support google code prettify
+            if (typeof prettyPrint !== 'undefined') prettyPrint();
+            // support 百度统计
+            if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);
+            // support google analytics
+            if (typeof ga !== 'undefined') ga('send', 'pageview', location.pathname + location.search);
+        }
+    });
+    InstantClick.on('wait', function() {
+        // pjax href click
+    });
+    InstantClick.on('fetch', function() {
+        // pjax begin
+    });
+    InstantClick.on('receive', function() {
+        // pjax end
+    });
+    InstantClick.init('mousedown');
+</script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+     if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+    url = location.href.split('#')[0];  
+        url = encodeURIComponent(url); 
+        $.ajax({
+            type: "get",
+            url: "https://share.yemajun.com/jssdk.php?url=" + url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "success_jsonpCallback",
+            success: function(data) {
+                wx.config({
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: [
+                         "onMenuShareTimeline",
+                        "onMenuShareAppMessage",
+                        "onMenuShareQQ", 
+                        "onMenuShareWeibo" 
+                    ]
+                });
+            },
+            error: function(data) {
+                alert("Timeout!");
+            }
+        });
+    wx.ready(function(){  
+        var options = {  
+            title: 'Windows下Apache2.4+Mysql5.7+Mod_fcgid+PHP多版本共存(PHP5.3+PHP5.4+PHP5.5+PHP5.6+PHP7)  ', // 分享标题  
+            link: 'https://www.yemajun.com/other/1.html', // 分享链接，记得使用绝对路径  
+            imgUrl: 'https://ae01.alicdn.com/kf/Hf47f11487f9d455d9b51837a9e2078009.jpg', // 分享图标，记得使用绝对路径  
+            desc: 'C++ Redistributable Visual Studio 2015（VC14） : vc_redist…', // 分享描述  
+            success: function () {  
+                console.info('分享成功！');  
+                // 用户确认分享后执行的回调函数  
+            },  
+            cancel: function () {  
+                console.info('取消分享！');  
+                // 用户取消分享后执行的回调函数  
+            }  
+        }  
+        wx.onMenuShareTimeline(options); // 分享到朋友圈  
+        wx.onMenuShareAppMessage(options); // 分享给朋友  
+        wx.onMenuShareQQ(options); // 分享到QQ  
+    });  
+ }
+
+</script>  
+
+</body>
+</html>

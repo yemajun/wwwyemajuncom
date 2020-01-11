@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet">
+    <title>Mac os远程登录Linux与文件传输 – 野马君</title>
+<link rel="dns-prefetch" href="//cdn.staticfile.org">
+<link rel="dns-prefetch" href="//s.w.org">
+<script type="text/javascript" src="//cdn.staticfile.org/jquery/3.1.1/jquery.min.js?ver=v1.2.5"></script>
+<script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script>
+<script type="text/javascript" src="//cdn.staticfile.org/prettify/r298/prettify.js?ver=v1.2.5"></script>
+<script type="text/javascript" src="//cdn.staticfile.org/instantclick/3.0.1/instantclick.min.js?ver=v1.2.5"></script>
+
+
+
+
+
+
+    <script>
+        if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
+        if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
+    </script>
+</head>
+<body>
+<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style>
+
+<header class="header">
+    <section class="container">
+        <hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter">
+            <h1 class="fullname">Mac os远程登录Linux与文件传输</h1>
+        </hgroup>
+    </section>
+    <section class="infos">
+        <div class="container containermenu" style="max-width: 100%;">
+                    <nav class="header_nav textcenter"><ul id="menu-%e5%a4%b4%e9%83%a8%e5%af%bc%e8%88%aa" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="http://jun.yipiyema.com">最新</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5"><a href="https://www.yemajun.com/other">其他</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69"><a href="https://www.yemajun.com/reprint">转载</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="https://www.yemajun.com/about">关于</a></li>
+</ul></nav>            </div>
+                
+    </section>
+</header>    
+    <section class="container main-load">
+        <article class="post_article" itemscope itemtype="https://schema.org/Article">
+        
+<p>远程登录Linux </p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">#打开Mac命令终端，输入以下命令
+ssh root@192.168.1.2</code></pre>
+
+
+
+<p> 向Linux传输和下载文件 </p>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">#上传本地文件1.zip到Linux服务器的home目录
+scp /Documents/1.zip root@192.168.1.2:/home   
+
+#从Linux服务器下载文件2.zip到本地Documents目录
+scp root@192.168.1.2:/home/2.zip /Documents/</code></pre>
+        </article>
+    </section><footer class="footer" style="display:none;">
+	<section class="container">
+        <div class="menu"><ul>
+<li id="menu-item-2" class=""><a></a></li>
+</ul></div>
+
+        <p class="textcenter">
+            <span>©  <a href="https://www.yemajun.com">野马君</a>：极简即自由</span>
+        </p>
+        
+        <div class="menu"><ul>
+<li id="menu-item-2" class=""><a></a></li>
+</ul></div>
+	</section>
+</footer>
+
+<div class="setting_tool iconfont colors" style="display:none;">
+    <div class="c">
+        <ul>
+            <li class="color undefined">白昼</li>
+            <li class="color sepia">黄昏</li>
+            <li class="color night">夜晚</li>
+            <li class="hr">
+            <li class="font serif">宋体</li>
+            <li class="font sans">黑体</li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/ajax-comment.js"></script>
+<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $(".post_article a").attr("rel" , "external");
+                $("a[rel='external']:not([href^='#']),a[rel='external nofollow']:not([href^='#'])").attr("target","_blank");
+                $("a.vi,.gallery a,.attachment a").attr("rel" , "");
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<div class="bg" style="background-image:url(https://www.google.com/s2/favicons?domain='+$(this).attr("href")+')">')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    InstantClick.on('change', function(isInitialLoad) {
+        jQuery.adamsOverload();
+        if (isInitialLoad === false) {
+            // support MathJax
+            if (typeof MathJax !== 'undefined') MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            // support google code prettify
+            if (typeof prettyPrint !== 'undefined') prettyPrint();
+            // support 百度统计
+            if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);
+            // support google analytics
+            if (typeof ga !== 'undefined') ga('send', 'pageview', location.pathname + location.search);
+        }
+    });
+    InstantClick.on('wait', function() {
+        // pjax href click
+    });
+    InstantClick.on('fetch', function() {
+        // pjax begin
+    });
+    InstantClick.on('receive', function() {
+        // pjax end
+    });
+    InstantClick.init('mousedown');
+</script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+     if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+    url = location.href.split('#')[0];  
+        url = encodeURIComponent(url); 
+        $.ajax({
+            type: "get",
+            url: "https://share.yemajun.com/jssdk.php?url=" + url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "success_jsonpCallback",
+            success: function(data) {
+                wx.config({
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: [
+                         "onMenuShareTimeline",
+                        "onMenuShareAppMessage",
+                        "onMenuShareQQ", 
+                        "onMenuShareWeibo" 
+                    ]
+                });
+            },
+            error: function(data) {
+                alert("Timeout!");
+            }
+        });
+    wx.ready(function(){  
+        var options = {  
+            title: 'Mac os远程登录Linux与文件传输  ', // 分享标题  
+            link: 'https://www.yemajun.com/other/32.html', // 分享链接，记得使用绝对路径  
+            imgUrl: 'https://ae01.alicdn.com/kf/Hf47f11487f9d455d9b51837a9e2078009.jpg', // 分享图标，记得使用绝对路径  
+            desc: '远程登录Linux #打开Mac命令终端，输入以下命令 ssh root@192.168.1.2 向Linux传输和下载文件 #上传…', // 分享描述  
+            success: function () {  
+                console.info('分享成功！');  
+                // 用户确认分享后执行的回调函数  
+            },  
+            cancel: function () {  
+                console.info('取消分享！');  
+                // 用户取消分享后执行的回调函数  
+            }  
+        }  
+        wx.onMenuShareTimeline(options); // 分享到朋友圈  
+        wx.onMenuShareAppMessage(options); // 分享给朋友  
+        wx.onMenuShareQQ(options); // 分享到QQ  
+    });  
+ }
+
+</script>  
+
+</body>
+</html>
