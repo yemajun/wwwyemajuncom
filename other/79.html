@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet">
-    <title>Win下安装onlyoffice让KodExplorer实现在线编辑查看文档 – 野马君</title>
+    <title>Win下部署OnlyOffice使KodExplorer实现在线编辑Office文档 – 野马君</title>
 <link rel="dns-prefetch" href="//cdn.staticfile.org">
 <link rel="dns-prefetch" href="//s.w.org">
 <script type="text/javascript" src="//cdn.staticfile.org/jquery/3.1.1/jquery.min.js?ver=v1.2.5"></script>
@@ -27,7 +27,7 @@
 <header class="header">
     <section class="container">
         <hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter">
-            <h1 class="fullname">Win下安装onlyoffice让KodExplorer实现在线编辑查看文档</h1>
+            <h1 class="fullname">Win下部署OnlyOffice使KodExplorer实现在线编辑Office文档</h1>
         </hgroup>
     </section>
     <section class="infos">
@@ -103,7 +103,7 @@ psql -U postgres -c "GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;"
 </ul></div>
 
         <p class="textcenter">
-            <span>©  <a href="https://www.yemajun.com">野马君</a>：极简即自由</span>
+            <span>©  <a href="https://www.yemajun.com">野马君</a>：追求自由</span>
         </p>
         
         <div class="menu"><ul>
@@ -195,12 +195,12 @@ psql -U postgres -c "GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;"
                 });
             },
             error: function(data) {
-                alert("Timeout!");
+                console.log("Timeout");
             }
         });
     wx.ready(function(){  
         var options = {  
-            title: 'Win下安装onlyoffice让KodExplorer实现在线编辑查看文档  ', // 分享标题  
+            title: 'Win下部署OnlyOffice使KodExplorer实现在线编辑Office文档  ', // 分享标题  
             link: 'https://www.yemajun.com/other/79.html', // 分享链接，记得使用绝对路径  
             imgUrl: 'https://ae01.alicdn.com/kf/Hf47f11487f9d455d9b51837a9e2078009.jpg', // 分享图标，记得使用绝对路径  
             desc: '下载并安装以下组件： ErlangRabbitMQRedisPostgreSQL 使用CMD，创建数据库 cd /D "%Progr…', // 分享描述  

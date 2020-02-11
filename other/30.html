@@ -57,14 +57,14 @@
 
 
 <pre class="wp-block-code"><code class="prettyprint"><VirtualHost *:80>
-		ServerName myshare.com
-		DocumentRoot "D:/Web/myshare"
-		<Directory "D:/Web/myshare">
-			Options FollowSymLinks ExecCGI
-			AllowOverride All
-			Order deny,allow
-			allow from all
-		</Directory>
+ServerName myshare.com
+DocumentRoot "D:/Web/myshare"
+<Directory "D:/Web/myshare">
+Options FollowSymLinks ExecCGI
+AllowOverride All
+Order deny,allow
+allow from all
+</Directory>
 </VirtualHost></code></pre>
 
 
@@ -82,7 +82,7 @@
 </ul></div>
 
         <p class="textcenter">
-            <span>©  <a href="https://www.yemajun.com">野马君</a>：极简即自由</span>
+            <span>©  <a href="https://www.yemajun.com">野马君</a>：追求自由</span>
         </p>
         
         <div class="menu"><ul>
@@ -174,7 +174,7 @@
                 });
             },
             error: function(data) {
-                alert("Timeout!");
+                console.log("Timeout");
             }
         });
     wx.ready(function(){  

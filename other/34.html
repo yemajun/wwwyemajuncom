@@ -16,7 +16,6 @@
 
 
 
-
     <script>
         if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
         if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
@@ -67,7 +66,7 @@ pscp root@192.168.1.9:/home/a.txt d:/download</code></pre>
 </ul></div>
 
         <p class="textcenter">
-            <span>©  <a href="https://www.yemajun.com">野马君</a>：极简即自由</span>
+            <span>©  <a href="https://www.yemajun.com">野马君</a>：追求自由</span>
         </p>
         
         <div class="menu"><ul>
@@ -159,7 +158,7 @@ pscp root@192.168.1.9:/home/a.txt d:/download</code></pre>
                 });
             },
             error: function(data) {
-                alert("Timeout!");
+                console.log("Timeout");
             }
         });
     wx.ready(function(){  
