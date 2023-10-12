@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet"><title>小米电视卸载自带桌面App更换第三方桌面 ： 野马君</title><link rel="dns-prefetch" href="//cdn.staticfile.org"><link rel="dns-prefetch" href="//s.w.org"><script type="text/javascript" src="//cdn.staticfile.org/jquery/3.1.1/jquery.min.js?ver=v1.2.5"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script><script type="text/javascript" src="//cdn.staticfile.org/prettify/r298/prettify.js?ver=v1.2.5"></script><script type="text/javascript" src="//cdn.staticfile.org/instantclick/3.0.1/instantclick.min.js?ver=v1.2.5"></script><script>
+        if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
+        if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
+    </script></head><body>
+<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style><header class="header"><section class="container"><hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter"><h1 class="fullname">小米电视卸载自带桌面App更换第三方桌面</h1>
+        </hgroup></section><section class="infos"><div class="container containermenu" style="max-width: 100%;">
+                    <nav class="header_nav textcenter"><ul id="menu-%e5%a4%b4%e9%83%a8%e5%af%bc%e8%88%aa" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="/">最新</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5"><a href="https://www.yemajun.com/other/">其他</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69"><a href="https://www.yemajun.com/reprint/">转载</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="https://www.yemajun.com/about/">关于</a></li>
+<li id="menu-item-97" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97"><a href="https://www.yemajun.com/timelines/">时间线</a></li>
+</ul></nav></div>
+                
+    </section></header><section class="container main-load"><article class="post_article" itemscope itemtype="https://schema.org/Article"><figure class="wp-block-image"><img src="https://www.yemajun.com/static/uploads/2023/10/2.png" alt="" class="wp-image-121" srcset="https://www.yemajun.com/static/uploads/2023/10/2.png 1920w,https://www.yemajun.com/static/uploads/2023/10/2-300x169.png 300w,https://www.yemajun.com/static/uploads/2023/10/2-768x432.png 768w,https://www.yemajun.com/static/uploads/2023/10/2-1024x576.png 1024w" sizes="(max-width: 1920px) 100vw, 1920px"></figure><h3>准备工作</h3>
+
+
+
+<ol><li>打开小米电视设置“关于”界面里连续点击“产品型号”开启开发者模式</li><li>在“账户和安全”选项开启“允许安装未验证应用”和“ADB调试” </li><li>下载 ADB 工具，CMD进入 ADB 目录</li></ol><ul><li>Windows <a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">https://dl.google.com/android/repository/platform-tools-latest-windows.zip</a></li><li>MacOS <a href="https://dl.google.com/android/repository/platform-tools-latest-darwin.zip">https://dl.google.com/android/repository/platform-tools-latest-darwin.zip</a></li><li>Linux <a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></li></ul><h3>通过 ADB 操作电视</h3>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">adb connect 192.168.1.2
+#查看自己电视IP并连接，注意在电视上点击确实
+
+adb install D:\ATV.apk
+#自行下载ATV Launcher Pro后，执行以上命令安装D:\ATV.apk到电视，并手动设置为系统桌面
+
+adb shell pm uninstall -k --user 0 com.mitv.tvhome
+#卸载小米桌面，如果想备份小米桌面App要自行下载安装Apk Extractor导出保存</code></pre>
+
+
+
+<h2>一些或许会用到的ADB命令</h2>
+
+
+
+<pre class="wp-block-code"><code class="prettyprint">adb shell pm list packages
+#列出所有应用
+ 
+adb shell pm list packages -s
+#列出系统应用
+ 
+adb shell pm list packages -3
+#列出第三方应用
+ 
+adb shell pm list packages -d
+#列出已禁用应用
+ 
+adb shell pm list packages -e
+#列出已启用应用
+
+adb shell dumpsys package com.mitv.tvhome
+#查询应用详细信息
+
+adb shell pm path com.mitv.tvhome
+#查看应用安装路径
+
+adb install D:\bilibili.apk
+#安装D:\bilibili.apk到电视
+
+adb install -s D:\bilibili.apk
+#将应用安装到 SD 存储卡 
+
+adb install -r D:\bilibili.apk
+#允许覆盖安装
+ 
+adb install -d D:\bilibili.apk
+#允许降级覆盖安装
+ 
+adb install -g D:\bilibili.apk
+#允许应用所需全部权限
+
+adb shell pm disable-user com.mitv.tvhome
+#禁用某应用
+
+adb shell pm enable com.mitv.tvhome
+#恢复某应用
+
+adb shell pm uninstall -k --user 0 com.mitv.tvhome
+#卸载某应用
+
+adb shell am force-stop com.mitv.tvhome
+#强制停止某应用
+
+adb push D:\bilibili.apk /sdcard/
+#将D盘bilibili.apk文件传输到电视sdcard目录
+
+adb pull /sdcard/bilibili.apk D:\Download
+#将电视sdcard目录的bilibili.apk文件传输到电脑D:\Download
+
+adb reboot
+#重启系统
+
+adb reboot recovery
+#重启到 Recovery 模式
+
+adb reboot bootloader
+#重启到 Fastboot 模式 </code></pre>
+
+
+
+<h2>小米电视系统应用对照表</h2>
+
+
+<table><thead><tr><th>包名称</th>
+<th>功能用途</th>
+</tr></thead><tbody><tr><td>com.mitv.screensaver</td>
+<td>智能屏保</td>
+</tr><tr><td>com.droidlogic.tvinput</td>
+<td>DroidLogicTvInput</td>
+</tr><tr><td>mitv.service</td>
+<td>小米电视服务</td>
+</tr><tr><td>com.android.cts.priv.ctsshim</td>
+<td>安卓兼容测试服务</td>
+</tr><tr><td>com.android.providers.telephony</td>
+<td>电话和短信存储</td>
+</tr><tr><td>com.android.providers.calendar</td>
+<td>日历存储</td>
+</tr><tr><td>com.android.tv.settings</td>
+<td>设置</td>
+</tr><tr><td>com.duokan.airkan.tvbox</td>
+<td>米联投射服务</td>
+</tr><tr><td>com.android.providers.media</td>
+<td>媒体存储设备</td>
+</tr><tr><td>com.xiaomi.android.TV.audio</td>
+<td>Android TV Tools</td>
+</tr><tr><td>com.xiaomi.account</td>
+<td>小米账户</td>
+</tr><tr><td>com.android.wallpapercropper</td>
+<td>安卓壁纸</td>
+</tr><tr><td>com.mitv.tvhome</td>
+<td>小米桌面</td>
+</tr><tr><td>com.xiaomi.mi_connect_service</td>
+<td>小米互联通信服务</td>
+</tr><tr><td>com.xiaomi.tv.gallery</td>
+<td>时尚画报</td>
+</tr><tr><td>com.mitv.alarmcenter</td>
+<td>定时提醒</td>
+</tr><tr><td>com.sohu.inputmethod.sogou.tv</td>
+<td>搜狗输入法</td>
+</tr><tr><td>com.android.externalstorage</td>
+<td>外部存储设备</td>
+</tr><tr><td>com.android.htmlviewer</td>
+<td>HTML 查看程序</td>
+</tr><tr><td>com.xiaomi.gamecenter.sdk.service.mibox</td>
+<td>小米服务安全插件</td>
+</tr><tr><td>com.android.companiondevicemanager</td>
+<td>Companion Device Manager</td>
+</tr><tr><td>com.android.providers.downloads</td>
+<td>内容下载管理器</td>
+</tr><tr><td>com.android.providers.tv</td>
+<td>TV Storage</td>
+</tr><tr><td>com.droidlogic</td>
+<td>droidlogic 系统</td>
+</tr><tr><td>com.mitv.codec.update</td>
+<td>编码器更新</td>
+</tr><tr><td>com.xiaomi.mitv.tvplayer</td>
+<td>模拟电视</td>
+</tr><tr><td>com.xiaomi.tweather</td>
+<td>天气</td>
+</tr><tr><td>com.xm.webcontent</td>
+<td>小米 WEB 内容</td>
+</tr><tr><td>com.xiaomi.mitv.appstore</td>
+<td>应用商店</td>
+</tr><tr><td>com.android.defcontainer</td>
+<td>软件包权限帮助程序</td>
+</tr><tr><td>com.android.pacprocessor</td>
+<td>系统 PAC 代理服务</td>
+</tr><tr><td>com.xiaomi.mibox.gamecenter</td>
+<td>游戏中心</td>
+</tr><tr><td>com.android.certinstaller</td>
+<td>证书安装程序</td>
+</tr><tr><td>com.xiaomi.mitv.settings</td>
+<td>电视设置</td>
+</tr><tr><td>com.xiaomi.mitv.providers.settings</td>
+<td>MiTVSettingsProvider</td>
+</tr><tr><td>android</td>
+<td>Android 系统</td>
+</tr><tr><td>com.android.camera2</td>
+<td>相机</td>
+</tr><tr><td>com.android.backupconfirm</td>
+<td>安卓备份确认服务</td>
+</tr><tr><td>com.android.statementservice</td>
+<td>Intent Filter Verification Service</td>
+</tr><tr><td>com.xiaomi.mitv.mediaexplorer</td>
+<td>高清播放器</td>
+</tr><tr><td>com.xiaomi.mitv.systemui</td>
+<td>小米系统界面</td>
+</tr><tr><td>com.android.providers.settings</td>
+<td>设置储存</td>
+</tr><tr><td>com.xiaomi.smarthome.tv</td>
+<td>米家</td>
+</tr><tr><td>com.android.sharedstoragebackup</td>
+<td>安卓备份服务</td>
+</tr><tr><td>com.android.printspooler</td>
+<td>打印处理服务</td>
+</tr><tr><td>com.xiaomi.mibox.lockscreen</td>
+<td>小米锁屏设置</td>
+</tr><tr><td>com.mitv.videoplayer</td>
+<td>小米 TV 播放器</td>
+</tr><tr><td>com.android.dreams.basic</td>
+<td>基本互动屏保</td>
+</tr><tr><td>com.android.webview</td>
+<td>Android System WebView</td>
+</tr><tr><td>com.android.se</td>
+<td>SecureElementApplication</td>
+</tr><tr><td>com.android.inputdevices</td>
+<td>输入设备</td>
+</tr><tr><td>com.xiaomi.screenrecorder</td>
+<td>录屏程序</td>
+</tr><tr><td>com.xiaomi.mitv.smartshare</td>
+<td>无线投屏</td>
+</tr><tr><td>com.android.musicfx</td>
+<td>音效均衡器</td>
+</tr><tr><td>com.xiaomi.voicecontrol</td>
+<td>小爱同学</td>
+</tr><tr><td>com.xiaomi.mitv.payment</td>
+<td>小米支付</td>
+</tr><tr><td>com.droidlogic.SubTitleService</td>
+<td>安卓 TV 系统服务</td>
+</tr><tr><td>com.xiaomi.mimusic2</td>
+<td>本地音乐播放器</td>
+</tr><tr><td>android.ext.shared</td>
+<td>Android Shared Library</td>
+</tr><tr><td>com.android.onetimeinitializer</td>
+<td>Google 套件安装选择</td>
+</tr><tr><td>com.android.keychain</td>
+<td>密钥链</td>
+</tr><tr><td>com.xiaomi.upnp</td>
+<td>小米即插即用服务</td>
+</tr><tr><td>com.xiaomi.mitv.pay</td>
+<td>小米电视支付</td>
+</tr><tr><td>android.ext.services</td>
+<td>Android Services Library</td>
+</tr><tr><td>com.android.packageinstaller</td>
+<td>软件包安装程序</td>
+</tr><tr><td>com.droidlogic.tv.soundeffectsettings</td>
+<td>Droid 音效设置</td>
+</tr><tr><td>com.android.proxyhandler</td>
+<td>系统代理处理程序</td>
+</tr><tr><td>com.xiaomi.miplay</td>
+<td>米家连接服务</td>
+</tr><tr><td>com.android.managedprovisioning</td>
+<td>工作资料设置</td>
+</tr><tr><td>com.xiaomi.devicereport</td>
+<td>设备报告</td>
+</tr><tr><td>com.xiaomi.mitv.upgrade</td>
+<td>系统更新</td>
+</tr><tr><td>com.android.dreams.phototable</td>
+<td>照片屏幕保护程序</td>
+</tr><tr><td>com.android.smspush</td>
+<td>安卓短信 WAP 推送</td>
+</tr><tr><td>com.android.wallpaper.livepicker</td>
+<td>Live Wallpaper Picker</td>
+</tr><tr><td>com.mitv.mivideoplayer</td>
+<td>小米电视播放器</td>
+</tr><tr><td>com.mitv.gallery</td>
+<td>相册</td>
+</tr><tr><td>com.duokan.videodaily</td>
+<td>视频头条</td>
+</tr><tr><td>com.miui.tv.analytics</td>
+<td>小米信息分析服务</td>
+</tr><tr><td>com.xiaomi.wfdsinkhelperservice</td>
+<td>无线直连助手服务</td>
+</tr><tr><td>com.xiaomi.mitv.shop</td>
+<td>小米商城</td>
+</tr><tr><td>com.xiaomi.statistic</td>
+<td>小米统计</td>
+</tr><tr><td>com.android.cts.ctsshim</td>
+<td>安卓兼容测试套件</td>
+</tr><tr><td>com.droidlogic.imageplayer</td>
+<td>NativeImagePlayer</td>
+</tr><tr><td>com.android.vpndialogs</td>
+<td>系统代理相关套件</td>
+</tr><tr><td>com.android.shell</td>
+<td>Shell</td>
+</tr><tr><td>com.android.wallpaperbackup</td>
+<td>安卓壁纸备份</td>
+</tr><tr><td>com.android.providers.userdictionary</td>
+<td>用户字典</td>
+</tr><tr><td>com.xiaomi.mitv.remotecontroller.service</td>
+<td>遥控器服务</td>
+</tr><tr><td>com.android.location.fused</td>
+<td>一体化位置信息</td>
+</tr><tr><td>com.android.systemui</td>
+<td>系统界面</td>
+</tr><tr><td>com.xiaomi.mitv.tvpush.tvpushservice</td>
+<td>电视推送服务</td>
+</tr><tr><td>com.xiaomi.account.auth</td>
+<td>小米帐号授权</td>
+</tr><tr><td>com.xiaomi.mitv.calendar</td>
+<td>日历</td>
+</tr><tr><td>com.mipay.wallet.tv</td>
+<td>小米钱包</td>
+</tr><tr><td>com.xiaomi.smarthome.tv.service</td>
+<td>米家</td>
+</tr><tr><td>com.android.bluetooth</td>
+<td>蓝牙</td>
+</tr><tr><td>com.xiaomi.mitv.handbook</td>
+<td>用户手册</td>
+</tr><tr><td>com.android.providers.contacts</td>
+<td>联系人存储</td>
+</tr><tr><td>com.android.captiveportallogin</td>
+<td>CaptivePortalLogin</td>
+</tr><tr><td>com.droidlogic.overlay</td>
+<td>安卓电视系统服务</td>
+</tr><tr><td>com.xiaomi.mitv.tvmanager</td>
+<td>电视管家</td>
+</tr></tbody></table></article></section><footer class="footer"><section class="container"><div class="menu"><ul><li id="menu-item-2" class=""><a></a></li>
+<li id="menu-item-96" class=""><a></a></li>
+</ul></div>
+
+        <p class="textcenter">
+            <span><a target="_blank" href="http://www.beian.miit.gov.cn">浙ICP备19051178号 </a><br><a target="_blank" href="http://www.beian.gov.cn">浙公网安备33032602100287号 </a><br><a href="https://www.yemajun.com">野马君 © 2023 </a></span>
+        </p>
+        
+        <div class="menu"><ul><li id="menu-item-2" class=""><a></a></li>
+<li id="menu-item-96" class=""><a></a></li>
+</ul></div>
+	</section></footer><div class="setting_tool iconfont colors">
+    <div class="c">
+        <ul><li class="color undefined">白昼</li>
+            <li class="color sepia">黄昏</li>
+            <li class="color night">夜晚</li>
+            <li class="hr">
+            <li class="font serif">宋体</li>
+            <li class="font sans">黑体</li>
+        </ul></div>
+</div>
+
+<script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/ajax-comment.js"></script><script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $(".post_article a").attr("rel" , "external");
+                $("a[rel='external']:not([href^='#']),a[rel='external nofollow']:not([href^='#'])").attr("target","_blank");
+                $("a.vi,.gallery a,.attachment a").attr("rel" , "");
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<div class="bg" style="background-image:url(https://www.google.com/s2/favicons?domain='+$(this).attr("href")+')">')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+</script><script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script><script>
+     if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+    url = location.href.split('#')[0];  
+        url = encodeURIComponent(url); 
+        $.ajax({
+            type: "get",
+            url: "https://share.yemajun.com/jssdk.php?url=" + url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "success_jsonpCallback",
+            success: function(data) {
+                wx.config({
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: [
+                         "onMenuShareTimeline",
+                        "onMenuShareAppMessage",
+                        "onMenuShareQQ", 
+                        "onMenuShareWeibo" 
+                    ]
+                });
+            },
+            error: function(data) {
+                console.log("Timeout");
+            }
+        });
+    wx.ready(function(){  
+        var options = {  
+            title: '小米电视卸载自带桌面App更换第三方桌面  ', // 分享标题  
+            link: 'https://www.yemajun.com/other/119.html', // 分享链接，记得使用绝对路径  
+            imgUrl: 'https://ae01.alicdn.com/kf/Hf47f11487f9d455d9b51837a9e2078009.jpg', // 分享图标，记得使用绝对路径  
+            desc: '准备工作 打开小米电视设置“关于”界面里连续点击“产品型号”开启开发者模式在“账户和安全”选项开启“允许安装未验证应用”和“ADB调…', // 分享描述  
+            success: function () {  
+                console.info('分享成功！');  
+                // 用户确认分享后执行的回调函数  
+            },  
+            cancel: function () {  
+                console.info('取消分享！');  
+                // 用户取消分享后执行的回调函数  
+            }  
+        }  
+        wx.onMenuShareTimeline(options); // 分享到朋友圈  
+        wx.onMenuShareAppMessage(options); // 分享给朋友  
+        wx.onMenuShareQQ(options); // 分享到QQ  
+    });  
+ }
+
+</script></body></html>
