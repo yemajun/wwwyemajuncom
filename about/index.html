@@ -53,33 +53,8 @@
             }
         });
     })(jQuery);
-    InstantClick.on('change', function(isInitialLoad) {
-        jQuery.adamsOverload();
-        if (isInitialLoad === false) {
-            // support MathJax
-            if (typeof MathJax !== 'undefined') MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-            // support google code prettify
-            if (typeof prettyPrint !== 'undefined') prettyPrint();
-            // support 百度统计
-            if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);
-            // support google analytics
-            if (typeof ga !== 'undefined') ga('send', 'pageview', location.pathname + location.search);
-        }
-    });
-    InstantClick.on('wait', function() {
-        // pjax href click
-    });
-    InstantClick.on('fetch', function() {
-        // pjax begin
-    });
-    InstantClick.on('receive', function() {
-        // pjax end
-    });
-    InstantClick.init('mousedown');
-</script>
-
-<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script>
+    jQuery.adamsOverload();
+</script><script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script><script>
      if (navigator.userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
     url = location.href.split('#')[0];  
         url = encodeURIComponent(url); 
