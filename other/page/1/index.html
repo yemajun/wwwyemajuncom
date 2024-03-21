@@ -13,7 +13,55 @@
 </ul></nav></div>
     </section></header><section class="posts main-load"><div class="container">
             <div class="post-list">
-                                <article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/127.html" itemprop="url"><h2 itemprop="name headline">Android安装APK-Splits分包APP</h2></a>
+                                <article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/167.html" itemprop="url"><h2 itemprop="name headline">Android ADB 常用命令</h2></a>
+                    </header><a href="https://www.yemajun.com/other/167.html" itemprop="url"> 
+                    <main><p itemprop="articleBody">
+                            
+
+#查看所有连接设备
+adb devices
+
+# 通过USB设置网络调试端口 会自动重启设备端的ADB服务
+adb tcpip 5555
+#连接...                        </p>
+                    </main></a>
+                    <footer><span class="time"><time datetime="2024-03-21T18:03:26+08:00" itemprop="datePublished" pubdate>2024.03.21</time></span>
+                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/166.html" itemprop="url"><h2 itemprop="name headline">Android ADB 配置永不关闭无线调试</h2></a>
+                    </header><a href="https://www.yemajun.com/other/166.html" itemprop="url"> 
+                    <main><p itemprop="articleBody">
+                            
+#需开启Root
+adb root
+adb remount
+adb shell
+cd /system
+cat build.prop
+echo service.adb.tcp.port=5555 >...                        </p>
+                    </main></a>
+                    <footer><span class="time"><time datetime="2024-03-21T17:51:57+08:00" itemprop="datePublished" pubdate>2024.03.21</time></span>
+                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/163.html" itemprop="url"><h2 itemprop="name headline">Nginx一分钟搭建WebDAV</h2></a>
+                    </header><a href="https://www.yemajun.com/other/163.html" itemprop="url"> 
+                    <main><p itemprop="articleBody">
+                            
+#命令检查是否有安装 http_dav_module 模块 
+nginx -V
+
+
+
+#在Nginx配置文件新增以下代码
+    location / {
+    ...                        </p>
+                    </main></a>
+                    <footer><span class="time"><time datetime="2024-03-11T16:12:57+08:00" itemprop="datePublished" pubdate>2024.03.11</time></span>
+                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/157.html" itemprop="url"><h2 itemprop="name headline">一些常用命令（Windows）</h2></a>
+                    </header><a href="https://www.yemajun.com/other/157.html" itemprop="url"> 
+                    <main><p itemprop="articleBody">
+                            
+#清除所有事件日志.bat
+start cmd /C for /F "tokens=*" %1 in ('wevtutil.exe el') DO we...                        </p>
+                    </main></a>
+                    <footer><span class="time"><time datetime="2024-02-03T20:34:53+08:00" itemprop="datePublished" pubdate>2024.02.03</time></span>
+                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/127.html" itemprop="url"><h2 itemprop="name headline">Android安装APK-Splits分包APP</h2></a>
                     </header><a href="https://www.yemajun.com/other/127.html" itemprop="url"> 
                     <main><p itemprop="articleBody">
                             
@@ -67,64 +115,6 @@ log.ad.xiaom...                        </p>
 把手机连接电脑( https://developer.android.google.cn/studio/run/win-usb?hl=zh-cn )，开启ADB调试，下载ADB ...                        </p>
                     </main></a>
                     <footer><span class="time"><time datetime="2023-07-05T03:02:50+08:00" itemprop="datePublished" pubdate>2023.07.05</time></span>
-                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/79.html" itemprop="url"><h2 itemprop="name headline">部署OnlyOffice使KodExplorer实现在线编辑Office文档（Windows）</h2></a>
-                    </header><a href="https://www.yemajun.com/other/79.html" itemprop="url"> 
-                    <main><p itemprop="articleBody">
-                            
-下载并安装以下组件：
-
-
-
-ErlangRabbitMQRedisPostgreSQL
-
-
-
-使用CMD，创建数据库
-
-
-
-cd /D "%ProgramFile...                        </p>
-                    </main></a>
-                    <footer><span class="time"><time datetime="2023-04-05T20:42:41+08:00" itemprop="datePublished" pubdate>2023.04.05</time></span>
-                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/1.html" itemprop="url"><h2 itemprop="name headline">Apache+Mysql+Mod_fcgid+PHP多版本共存（Windows）</h2></a>
-                    </header><a href="https://www.yemajun.com/other/1.html" itemprop="url"> 
-                    <main><p itemprop="articleBody">
-                            
-C++ Redistributable Visual Studio 2015（VC14） : vc_redist.x86.exe or vc_redist.x64....                        </p>
-                    </main></a>
-                    <footer><span class="time"><time datetime="2023-04-05T18:15:38+08:00" itemprop="datePublished" pubdate>2023.04.05</time></span>
-                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/30.html" itemprop="url"><h2 itemprop="name headline">配置Apache使用局域网共享目录（Windows）</h2></a>
-                    </header><a href="https://www.yemajun.com/other/30.html" itemprop="url"> 
-                    <main><p itemprop="articleBody">
-                            
- 打开CMD，创建硬链接 
-
-
-
-mklink /D D:\Web\myshare //10.0.0.2/myshare
-
-
-
-配置Apache
-
-
-
-<VirtualHost *:...                        </p>
-                    </main></a>
-                    <footer><span class="time"><time datetime="2023-04-05T15:18:30+08:00" itemprop="datePublished" pubdate>2023.04.05</time></span>
-                    </footer></article><article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting"><header><a href="https://www.yemajun.com/other/28.html" itemprop="url"><h2 itemprop="name headline">解决 MySQL 无法远程连接 ERROR 1130: Host ‘10.0.0.100’ is not allowed to connect to this MySQL server</h2></a>
-                    </header><a href="https://www.yemajun.com/other/28.html" itemprop="url"> 
-                    <main><p itemprop="articleBody">
-                            
-#配置允许任何主机连接
-
-mysql -u root -p
-
-mysql>use mysql;
-
-mysql>update user set host = "%&qu...                        </p>
-                    </main></a>
-                    <footer><span class="time"><time datetime="2023-04-05T15:05:35+08:00" itemprop="datePublished" pubdate>2023.04.05</time></span>
                     </footer></article><nav class="reade_more"><span class="page-numbers current">1</span> <a class="page-numbers" href="https://www.yemajun.com/other/page/2/" title="第 2 页">2</a> <a class="page-numbers" href="https://www.yemajun.com/other/page/2/" title="下一页">»</a>                 </nav></div>
         </div>
     </section><footer class="footer"><section class="container"><div class="menu"><ul><li id="menu-item-2" class=""><a></a></li>

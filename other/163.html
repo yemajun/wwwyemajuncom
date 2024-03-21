@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet"><title>Android安装APK-Splits分包APP ： 野马君</title><link rel="dns-prefetch" href="//s.w.org"><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/instantclick.min.js"></script><script>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet"><title>Nginx一分钟搭建WebDAV ： 野马君</title><link rel="dns-prefetch" href="//s.w.org"><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/instantclick.min.js"></script><script>
         if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
         if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
     </script></head><body>
-<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style><header class="header"><section class="container"><hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter"><h1 class="fullname">Android安装APK-Splits分包APP</h1>
+<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style><header class="header"><section class="container"><hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter"><h1 class="fullname">Nginx一分钟搭建WebDAV</h1>
         </hgroup></section><section class="infos"><div class="container containermenu" style="max-width: 100%;">
                     <nav class="header_nav textcenter"><ul id="menu-%e5%a4%b4%e9%83%a8%e5%af%bc%e8%88%aa" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="/">最新</a></li>
 <li id="menu-item-143" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-143"><a href="https://www.yemajun.com/other/">其他</a></li>
@@ -12,46 +12,22 @@
 <li id="menu-item-97" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97"><a href="https://www.yemajun.com/timelines/">时间线</a></li>
 </ul></nav></div>
                 
-    </section></header><section class="container main-load"><article class="post_article" itemscope itemtype="https://schema.org/Article"><blockquote class="wp-block-quote"><p>通过解析Google Play或者Amazon Appstore下载的APP ，如果使用了APK-Splits技术，这时会有base.apk和config.arm64_v8a.apk之类的安装包，虽然主程序base.apk可以直接安装，但打开时会出现闪退，这时就需要通过ADB命令来安装。</p></blockquote>
+    </section></header><section class="container main-load"><article class="post_article" itemscope itemtype="https://schema.org/Article"><pre class="wp-block-code"><code class="prettyprint">#命令检查是否有安装 http_dav_module 模块 
+nginx -V</code></pre>
 
 
 
-<p>首先电脑上先<a href="https://www.yemajun.com/other/119.html">安装ADB工具</a>，然后手机打开开发者模式并开启USB调试和USB安装，通过CMD命令行运行以下命令</p>
-
-
-
-<pre class="wp-block-code"><code class="prettyprint">#查看连接设备
-adb devices
-
-#将下载的base.apk，config.arm64_v8a.apk，config.xxhdpi.apk，config.en.apk文件传到手机临时目录
-adb push /path/to/apk/base.apk /data/local/tmp
-adb push /path/to/apk/config.arm64_v8a.apk /data/local/tmp
-adb push /path/to/apk/config.xxhdpi.apk /data/local/tmp
-adb push /path/to/apk/config.en.apk /data/local/tmp
-
-#进入Shell命令行模式：
-adb shell
-
-#创建一个安装进程
-pm install-create
-#此时会返回一个结果Success: created install session [1841736030]
-注意以下命令方括号里的session ID替换成你自己的
-
-#写入base.apk
-pm install-write 1841736030 base.apk /data/local/tmp/base.apk
-
-#写入config.arm64_v8a.apk
-pm install-write 1841736030 config.arm64_v8a.apk /data/local/tmp/config.arm64_v8a.apk
-
-#写入config.xxhdpi.apk
-pm install-write 1841736030 config.xxhdpi.apk /data/local/tmp/config.xxhdpi.apk
-
-#写入config.xxhdpi.apk
-pm install-write 1841736030 config.en.apk /data/local/tmp/config.en.apk
-
-#执行合并安装，返回Success说明安装成功
-pm install-commit 1841736030
-</code></pre>
+<pre class="wp-block-code"><code class="prettyprint">#在Nginx配置文件新增以下代码
+    location / {
+         root     /www/www/webdav; # 自行配置WebDAV目录
+         client_max_body_size 102400M; # 大文件支持
+         charset utf-8; # 编码
+         autoindex on;
+         dav_methods PUT DELETE MKCOL COPY MOVE;
+         # 下面配置需要 nginx-dav-ext-module 支持
+         dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
+         create_full_put_path  on;
+     }</code></pre>
         </article></section><footer class="footer"><section class="container"><div class="menu"><ul><li id="menu-item-2" class=""><a></a></li>
 <li id="menu-item-96" class=""><a></a></li>
 </ul></div>
