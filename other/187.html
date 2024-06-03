@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet"><title>部署OnlyOffice使KodExplorer实现在线编辑Office文档（Windows） ： 野马君</title><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/instantclick.min.js"></script><script>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet"><title>Docker构建到导出 ： 野马君</title><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script><script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/instantclick.min.js"></script><script>
         if(localStorage.adams_color_style) $('head').append("<style class='diy-color-style'>" + localStorage.adams_color_style + "");
         if(localStorage.adams_font_style) $('head').append("<style class='diy-font-style'>" + localStorage.adams_font_style + "");
     </script></head><body>
-<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style><header class="header"><section class="container"><hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter"><h1 class="fullname">部署OnlyOffice使KodExplorer实现在线编辑Office文档（Windows）</h1>
+<style>#instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#fff;width:100%;margin-left:-100%;height:2px;transition:all .25s}</style><header class="header"><section class="container"><hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter"><h1 class="fullname">Docker构建到导出</h1>
         </hgroup></section><section class="infos"><div class="container containermenu" style="max-width: 100%;">
                     <nav class="header_nav textcenter"><ul id="menu-%e5%a4%b4%e9%83%a8%e5%af%bc%e8%88%aa" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="/">最新</a></li>
 <li id="menu-item-143" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-143"><a href="https://www.yemajun.com/other/">其他</a></li>
@@ -12,42 +12,14 @@
 <li id="menu-item-97" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97"><a href="https://www.yemajun.com/timelines/">时间线</a></li>
 </ul></nav></div>
                 
-    </section></header><section class="container main-load"><article class="post_article" itemscope itemtype="https://schema.org/Article"><p>下载并安装以下组件：</p>
-
-
-
-<ul><li><a href="http://erlang.org/download/otp_win64_20.3.exe">Erlang</a></li><li><a href="https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.7/rabbitmq-server-3.7.7.exe">RabbitMQ</a></li><li><a href="https://github.com/MSOpenTech/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi">Redis</a></li><li><a href="http://get.enterprisedb.com/postgresql/postgresql-9.6.0-1-windows-x64.exe">PostgreSQL</a></li></ul><p>使用CMD，创建数据库</p>
-
-
-
-<pre class="wp-block-code"><code class="prettyprint">cd /D "%ProgramFiles%\PostgreSQL\9.6\bin"
-psql -U postgres -c "CREATE DATABASE onlyoffice;"
-psql -U postgres -c "CREATE USER onlyoffice WITH password 'onlyoffice';"
-psql -U postgres -c "GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;"</code></pre>
-
-
-
-<p> 使用CMD， 安装<a href="https://sourceforge.net/projects/teamlab/files/ONLYOFFICE_DocumentServer/v5.0/binaries/onlyoffice-documentserver.exe/download">Document Server</a>，设置端口为6666</p>
-
-
-
-<pre class="wp-block-code"><code class="prettyprint">onlyoffice-documentserver.exe /DS_PORT=6666</code></pre>
-
-
-
-<p>PostgreSQL Database 设置参数</p>
-
-
-
-<ul><li>主机：localhost</li><li>用户：onlyoffice</li><li>密码：onlyoffice</li><li>数据库：onlyoffice</li></ul><p>RabbitMQ 设置参数 </p>
-
-
-
-<ul><li>主机：localhost</li><li>用户：guest</li><li>密码：guest</li></ul><p>Redis 设置参数  </p>
-
-
-
-<ul><li>主机：localhost</li></ul><p>下载<a href="#">onlyoffice插件</a>， 并启用 </p>
+    </section></header><section class="container main-load"><article class="post_article" itemscope itemtype="https://schema.org/Article"><pre class="wp-block-code"><code class="prettyprint">#创建一个名为Dockerfile的文件，执行下面命令生成docker镜像
+docker build -t yemalive .
+#执行以下命令，即可使用该镜像启动一个Docker容器
+docker run -d -p 8080:8080 yemalive
+#将镜像导出为tar文件
+docker save -o yemalive.tar yemalive
+#加载镜像
+docker load -i yemalive.tar</code></pre>
         </article></section><footer class="footer"><section class="container"><div class="menu"><ul><li id="menu-item-2" class=""><a></a></li>
 <li id="menu-item-96" class=""><a></a></li>
 </ul></div>
