@@ -92,7 +92,7 @@ body {line-height: 1;background: #fff;color: #656d78;-webkit-font-smoothing: ant
 .infos.share-close .share a, .infos.donate-close .donate a {box-shadow: 0 1px inset;}
 .infos.share-close .share .qrcode i, .infos .donate .window ul li:after {font-size: 12px;font-style: normal;background: none;box-shadow: none;top: 118px;}
 .infos .donate .window ul li:after {margin: -8px;}
-.infos.fixed {position: fixed;z-index: 101;top: 0;left: 0;right: 0;box-shadow: 0 2px 40px rgba(0,0,0,.1);backdrop-filter: blur(6.18px);}
+.infos.fixed {position: fixed;z-index: 101;top: 0;left: 0;right: 0;box-shadow: 0 2px 40px rgba(0,0,0,0);backdrop-filter: blur(6.18px);}
 .infos.fixed:before, .infos.fixed:after {display: none;}
 .infos.fixed .socials, .infos .fixed-title, .infos.fixed .placard, .infos .fixed-menus {display: none;}
 .infos .fields, .infos.fixed .fixed-title {float: left;display: block;}
