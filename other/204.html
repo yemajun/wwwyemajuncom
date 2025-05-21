@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet">
-    <title>Nginx一分钟搭建WebDAV（Linux） ： 野马君</title>
+    <title>小米电视配置代理上网（Android） ： 野马君</title>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script>
@@ -26,7 +26,7 @@
 <header class="header">
     <section class="container">
         <hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter">
-            <h1 class="fullname">Nginx一分钟搭建WebDAV（Linux）</h1>
+            <h1 class="fullname">小米电视配置代理上网（Android）</h1>
         </hgroup>
     </section>
     <section class="infos">
@@ -41,22 +41,16 @@
     <section class="container main-load">
         <article class="post_article" itemscope itemtype="https://schema.org/Article">
         
-<pre class="wp-block-code"><code class="prettyprint">#命令检查是否有安装 http_dav_module 模块 
-nginx -V</code></pre>
-
-
-
-<pre class="wp-block-code"><code class="prettyprint">#在Nginx配置文件新增以下代码
-    location / {
-         root     /www/www/webdav; # 自行配置WebDAV目录
-         client_max_body_size 102400M; # 大文件支持
-         charset utf-8; # 编码
-         autoindex on;
-         dav_methods PUT DELETE MKCOL COPY MOVE;
-         # 下面配置需要 nginx-dav-ext-module 支持
-         dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
-         create_full_put_path  on;
-     }</code></pre>
+<pre class="wp-block-code"><code class="prettyprint">#配置全局代理上网
+adb shell settings put global http_proxy 192.168.1.2:8888
+adb shell settings put global https_proxy 192.168.1.2:8888
+adb shell settings put global socks4 192.168.1.2:8888
+adb shell settings put global socks5 192.168.1.2:8888
+adb shell settings put global all_proxy 192.168.1.2:8888
+#查看代理上网配置
+adb shell settings get global http_proxy
+#取消代理上网
+adb shell settings put global http_proxy :0</code></pre>
         </article>
     </section><footer class="footer">
 	<section class="container">

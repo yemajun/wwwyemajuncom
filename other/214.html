@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://www.yemajun.com/static/themes/yemajun/style.css" type="text/css" rel="stylesheet">
-    <title>Nginx一分钟搭建WebDAV（Linux） ： 野马君</title>
+    <title>Docker从容器创建镜像并推送（Linux） ： 野马君</title>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/script.js"></script>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/prettify.js"></script>
 <script type="text/javascript" src="https://www.yemajun.com/static/themes/yemajun/static/instantclick.min.js"></script>
-
 
 
 
@@ -26,7 +25,7 @@
 <header class="header">
     <section class="container">
         <hgroup itemscope itemtype="https://schema.org/WPHeader" class="textcenter">
-            <h1 class="fullname">Nginx一分钟搭建WebDAV（Linux）</h1>
+            <h1 class="fullname">Docker从容器创建镜像并推送（Linux）</h1>
         </hgroup>
     </section>
     <section class="infos">
@@ -41,22 +40,22 @@
     <section class="container main-load">
         <article class="post_article" itemscope itemtype="https://schema.org/Article">
         
-<pre class="wp-block-code"><code class="prettyprint">#命令检查是否有安装 http_dav_module 模块 
-nginx -V</code></pre>
+<pre class="wp-block-code"><code class="prettyprint">docker ps
+#查看容器
 
+docker commit -a "user" -m "hello" 514b9401c4an user/images:v1
+#从容器创建一个新的镜像。
+#docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+# -a :提交的镜像作者；
+# -c :使用Dockerfile指令来创建镜像；
+# -m :提交时的说明文字；
+# -p :在commit时，将容器暂停。
 
+docker login
+#登录docker hub
 
-<pre class="wp-block-code"><code class="prettyprint">#在Nginx配置文件新增以下代码
-    location / {
-         root     /www/www/webdav; # 自行配置WebDAV目录
-         client_max_body_size 102400M; # 大文件支持
-         charset utf-8; # 编码
-         autoindex on;
-         dav_methods PUT DELETE MKCOL COPY MOVE;
-         # 下面配置需要 nginx-dav-ext-module 支持
-         dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
-         create_full_put_path  on;
-     }</code></pre>
+docker push user/images:v1
+#推送镜像</code></pre>
         </article>
     </section><footer class="footer">
 	<section class="container">
